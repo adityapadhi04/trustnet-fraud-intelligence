@@ -168,7 +168,7 @@
     "alert_id": "ALT-TX27D4B0F95C",
     "transaction_id": "TX27D4B0F95C",
     "severity": "CRITICAL",
-    "risk_score": 96.8,
+    "risk_score": 96.4,
     "risk_level": "CRITICAL",
     "alert_type": "POTENTIAL_MULE",
     "primary_reason": "Potential mule behavior detected (e.g. rapid fund pass-through or fan-in/fan-out patterns)",
