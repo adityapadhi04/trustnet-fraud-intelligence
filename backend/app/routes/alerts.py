@@ -31,31 +31,45 @@ ALERTS_JSON_PATH = os.path.join(PROJECT_ROOT, "datasets", "alerts.json")
 _db_lock = threading.Lock()
 
 
+# Check for writable temp directory on serverless (Vercel)
+is_vercel = os.environ.get("VERCEL") is not None
+ALERTS_DB_PATH = "/tmp/alerts.json" if is_vercel else ALERTS_JSON_PATH
+
+
 class AlertsStore:
     """Thread-safe JSON file based local database for alerts."""
     
     @staticmethod
     def load_all() -> dict:
-        if not os.path.exists(ALERTS_JSON_PATH):
+        # If on Vercel and /tmp/alerts.json doesn't exist yet, copy it from the package
+        if is_vercel and not os.path.exists(ALERTS_DB_PATH) and os.path.exists(ALERTS_JSON_PATH):
+            try:
+                import shutil
+                os.makedirs(os.path.dirname(ALERTS_DB_PATH), exist_ok=True)
+                shutil.copy2(ALERTS_JSON_PATH, ALERTS_DB_PATH)
+            except Exception as e:
+                print(f"Could not copy alerts file to tmp: {str(e)}")
+        
+        if not os.path.exists(ALERTS_DB_PATH):
             return {}
         try:
-            with open(ALERTS_JSON_PATH, "r", encoding="utf-8") as f:
+            with open(ALERTS_DB_PATH, "r", encoding="utf-8") as f:
                 content = f.read().strip()
                 if not content:
                     return {}
                 return json.loads(content)
         except Exception as e:
-            print(f"Error loading alerts database: {str(e)}")
+            print(f"Error loading alerts database from {ALERTS_DB_PATH}: {str(e)}")
             return {}
 
     @staticmethod
     def save_all(alerts_dict: dict):
         try:
-            os.makedirs(os.path.dirname(ALERTS_JSON_PATH), exist_ok=True)
-            with open(ALERTS_JSON_PATH, "w", encoding="utf-8") as f:
+            os.makedirs(os.path.dirname(ALERTS_DB_PATH), exist_ok=True)
+            with open(ALERTS_DB_PATH, "w", encoding="utf-8") as f:
                 json.dump(alerts_dict, f, indent=2, ensure_ascii=False)
         except Exception as e:
-            print(f"Error saving alerts database: {str(e)}")
+            print(f"Error saving alerts database to {ALERTS_DB_PATH}: {str(e)}")
 
 
 def calculate_severity(risk_score: float) -> str:
