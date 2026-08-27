@@ -1,0 +1,70 @@
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+/env/
+/venv/
+
+# Python Cache and Compilations
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Node.js and Frontend Builds
+node_modules/
+/frontend/node_modules/
+/frontend/build/
+/frontend/dist/
+/frontend/.next/
+/frontend/out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+.project
+.classpath
+.settings/
+
+# Datasets and Large Data Files
+# Exclude CSV, Parquet, JSON, and XLSX data files from the datasets folder, keeping documentation
+/datasets/*.csv
+/datasets/*.xlsx
+/datasets/*.parquet
+/datasets/*.json
+!/datasets/README.md
+
+# Machine Learning Models and Artifacts
+# Exclude generated model files and weights
+/machine_learning/models/
+/models/
+*.pkl
+*.joblib
+*.h5
+*.pb
+*.onnx
+*.ckpt
+
+# Operating System Files
+DS_Store
+Thumbs.db
+desktop.ini
