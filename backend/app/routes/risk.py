@@ -210,4 +210,84 @@ async def analyze_transaction(request: TransactionAnalysisRequest):
         "network_intelligence": network_intel
     }
 
+    # Override for controlled demo event if flagged
+    if request.demo_event:
+        import random
+        from machine_learning.src.risk_engine.schemas import RiskFactor
+        risk_out_factors = [
+            RiskFactor(factor="Extreme amount deviation from historical baseline", category="BEHAVIORAL", severity="CRITICAL", contribution=45.0),
+            RiskFactor(factor="Device and IP address location mismatch anomaly", category="ANOMALY", severity="HIGH", contribution=30.0),
+            RiskFactor(factor="Elevated connectivity to suspicious network mule clusters", category="NETWORK", severity="HIGH", contribution=20.0)
+        ]
+        
+        response_payload["fraud_probability"] = round(0.94 + random.uniform(0.01, 0.03), 4)
+        response_payload["anomaly_score"] = 0.85
+        response_payload["supervised_risk"] = 94.0
+        response_payload["anomaly_risk"] = 90.0
+        response_payload["behavioral_risk"] = 95.0
+        response_payload["network_risk"] = 95.0
+        response_payload["risk_score"] = round(92.0 + random.uniform(2.0, 5.0), 1)
+        response_payload["risk_level"] = "CRITICAL"
+        response_payload["risk_factors"] = [
+            {
+                "factor": f.factor,
+                "category": f.category,
+                "severity": f.severity,
+                "contribution": f.contribution
+            } for f in risk_out_factors
+        ]
+        response_payload["network_intelligence"] = {
+            "network_risk": 95.0,
+            "mule_risk": 90.0,
+            "indicators": ["Elevated recipient in-degree count", "Suspected rapid pass-through connection"],
+            "metrics": {
+                "incoming_amount": request.amount,
+                "outgoing_amount": request.amount,
+                "incoming_tx_count": 8,
+                "outgoing_tx_count": 8,
+                "total_network_tx_count": 16,
+                "rapid_pass_through_count": 1
+            },
+            "suspicious_connections": [
+                {"account_id": request.receiver_id or "U9999", "risk_score": 90.0}
+            ]
+        }
+        
+        if request.transaction_id:
+            try:
+                from backend.app.routes.alerts import add_alert_for_transaction
+                add_alert_for_transaction(
+                    transaction_id=request.transaction_id,
+                    risk_score=response_payload["risk_score"],
+                    risk_level=response_payload["risk_level"],
+                    risk_factors=risk_out_factors,
+                    network_intel=response_payload["network_intelligence"],
+                    fraud_prob=response_payload["fraud_probability"],
+                    anomaly_score=response_payload["anomaly_score"],
+                    anomaly_risk=response_payload["anomaly_risk"],
+                    created_at=request.timestamp
+                )
+            except Exception as e:
+                print(f"Failed to generate demo alert: {str(e)}")
+                
+    else:
+        # 8. Dynamically create/update alert if risk score >= 40 and transaction_id is available
+        if response_payload["risk_score"] >= 40.0 and request.transaction_id:
+            try:
+                from backend.app.routes.alerts import add_alert_for_transaction
+                add_alert_for_transaction(
+                    transaction_id=request.transaction_id,
+                    risk_score=response_payload["risk_score"],
+                    risk_level=response_payload["risk_level"],
+                    risk_factors=risk_out.risk_factors,
+                    network_intel=response_payload["network_intelligence"],
+                    fraud_prob=response_payload["fraud_probability"],
+                    anomaly_score=response_payload["anomaly_score"],
+                    anomaly_risk=response_payload["anomaly_risk"],
+                    created_at=request.timestamp
+                )
+            except Exception as e:
+                # Log error but do not crash the response since alert generation is a secondary task
+                print(f"Failed to dynamically generate alert for {request.transaction_id}: {str(e)}")
+
     return response_payload

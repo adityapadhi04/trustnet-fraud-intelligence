@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: trustnet-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHONPATH
+        value: .
+      - key: FRONTEND_URL
+        sync: false

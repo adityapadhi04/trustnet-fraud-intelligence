@@ -78,3 +78,76 @@ export async function fetchAccountNetworkProfile(accountId, beforeTimestamp = nu
     const query = beforeTimestamp ? `?before_timestamp=${encodeURIComponent(beforeTimestamp)}` : '';
     return await request(`/api/v1/network/${accountId}${query}`);
 }
+
+/**
+ * Fetch all alerts with optional severity and status filters
+ */
+export async function fetchAlerts(filters = {}) {
+    const params = new URLSearchParams();
+    if (filters.severity) params.append('severity', filters.severity);
+    if (filters.status) params.append('status', filters.status);
+    const query = params.toString() ? `?${params.toString()}` : '';
+    return await request(`/api/v1/alerts${query}`);
+}
+
+/**
+ * Fetch details of a specific alert
+ */
+export async function fetchAlert(alertId) {
+    return await request(`/api/v1/alerts/${alertId}`);
+}
+
+/**
+ * Update the lifecycle status of an alert
+ */
+export async function updateAlertStatus(alertId, status) {
+    return await request(`/api/v1/alerts/${alertId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ status })
+    });
+}
+
+/**
+ * Fetch report dashboard summary statistics
+ */
+export async function fetchReportSummary() {
+    return await request('/api/v1/reports/summary');
+}
+
+/**
+ * Returns the API download endpoint URL for reports
+ */
+export function getReportDownloadUrl() {
+    return `${API_BASE_URL}/api/v1/reports/download`;
+}
+
+/**
+ * Fetch the next transaction from the live stream simulator
+ */
+export async function fetchMonitorNext() {
+    return await request('/api/v1/monitor/next');
+}
+
+/**
+ * Fetch the live monitor aggregate statistics and system status
+ */
+export async function fetchMonitorStatus() {
+    return await request('/api/v1/monitor/status');
+}
+
+/**
+ * Fetch the current demo mode configuration state
+ */
+export async function fetchDemoMode() {
+    return await request('/api/v1/monitor/demo_mode');
+}
+
+/**
+ * Toggle the demo mode configuration state
+ */
+export async function toggleDemoMode(enabled) {
+    return await request('/api/v1/monitor/demo_mode', {
+        method: 'POST',
+        body: JSON.stringify({ demo_mode: enabled })
+    });
+}

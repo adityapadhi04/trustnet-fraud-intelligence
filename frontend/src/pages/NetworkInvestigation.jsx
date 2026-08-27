@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchAccountNetworkProfile, fetchSampleTransactions } from '../services/api';
 
-function NetworkInvestigation() {
+function NetworkInvestigation({ initialAccountId }) {
   const [accountId, setAccountId] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
@@ -38,6 +38,13 @@ function NetworkInvestigation() {
     }
     loadSamples();
   }, []);
+
+  // Auto-trigger search if initialAccountId is provided from parent state
+  useEffect(() => {
+    if (initialAccountId) {
+      handleSearch(initialAccountId);
+    }
+  }, [initialAccountId]);
 
   // Fetch network profile
   const handleSearch = async (idToSearch) => {

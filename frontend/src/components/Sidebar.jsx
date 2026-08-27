@@ -45,12 +45,18 @@ function Sidebar({ currentPage, onPageChange }) {
           <span>🕸️</span> Network Investigation
         </button>
 
-        <button className="nav-item disabled" disabled>
-          <span>🚨</span> Alerts <span className="nav-item-badge">Soon</span>
+        <button 
+          className={`nav-item ${currentPage === 'alerts' ? 'active' : ''}`}
+          onClick={() => onPageChange('alerts')}
+        >
+          <span>🚨</span> Alerts
         </button>
 
-        <button className="nav-item disabled" disabled>
-          <span>📄</span> Reports <span className="nav-item-badge">Soon</span>
+        <button 
+          className={`nav-item ${currentPage === 'reports' ? 'active' : ''}`}
+          onClick={() => onPageChange('reports')}
+        >
+          <span>📄</span> Reports
         </button>
       </nav>
       

@@ -7,7 +7,7 @@ the baseline health and metadata endpoints.
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app.routes import risk, transactions, model, network
+from backend.app.routes import risk, transactions, model, network, alerts, reports, monitor
 from backend.app.models_loader import get_models_status
 
 app = FastAPI(
@@ -45,6 +45,9 @@ app.include_router(risk.router)
 app.include_router(transactions.router)
 app.include_router(model.router)
 app.include_router(network.router)
+app.include_router(alerts.router)
+app.include_router(reports.router)
+app.include_router(monitor.router)
 
 
 @app.get("/")

@@ -1,4 +1,4 @@
-"""
+ """
 TRUSTNET - Synthetic Transaction Data Generator
 Generates a simulated transactional dataset for testing and development of fraud detection ML and graph models.
 All generated records are synthetic and do not represent actual financial transactions.

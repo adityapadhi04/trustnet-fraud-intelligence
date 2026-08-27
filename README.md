@@ -142,4 +142,71 @@ SHAP calculates the exact contribution of each transaction feature (e.g., amount
 ---
 
 ## 9. How to Setup and Run
-*(Detailed instructions will be added as backend and frontend structures are developed in future steps.)*
+
+### Local Development Setup
+
+#### Backend Setup:
+1. Ensure Python 3.8+ (tested on Python 3.11) is installed.
+2. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   ```
+3. Activate the virtual environment:
+   * **Windows**: `venv\Scripts\activate`
+   * **macOS/Linux**: `source venv/bin/activate`
+4. Install backend dependencies:
+   ```bash
+   pip install -r backend/requirements.txt
+   ```
+5. Run the FastAPI development server:
+   ```bash
+   $env:PYTHONPATH="."
+   venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
+   ```
+
+#### Frontend Setup:
+1. Ensure Node.js and npm are installed.
+2. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
+5. Build the production bundle:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 10. Automated Testing
+
+Run the full Python test suite (unit and integration tests) using:
+```bash
+venv\Scripts\python.exe -m pytest tests/ -v
+```
+
+---
+
+## 11. API Endpoint Overview
+
+### Live Monitor API
+* `GET /api/v1/monitor/status` — Get live session counters (transactions processed, last transaction time, high risk counts, alert counts).
+* `GET /api/v1/monitor/next` — Advances the simulator cursor sequentially, runs the hybrid risk scorer and SHAP explainer, creates alerts, and returns the transaction details.
+
+### Risk & Network APIs
+* `POST /api/v1/risk/analyze` — Evaluates a raw transaction payload against XGBoost, Isolation Forest, and Network risk scores to output consolidated decisions and SHAP attributions.
+* `GET /api/v1/network/{account_id}` — Resolves 1-hop egocentric network node risks, degree counts, and Mule indicator flags.
+* `GET /api/v1/transactions/sample?limit=10` — Queries a list of sample synthetic transactions.
+
+### Alerts & Reports APIs
+* `GET /api/v1/alerts` — Lists generated alerts (supports severity and lifecycle status filters).
+* `PATCH /api/v1/alerts/{alert_id}` — Updates an alert status (`OPEN`, `INVESTIGATING`, `RESOLVED`, `FALSE_POSITIVE`).
+* `GET /api/v1/reports/summary` — Compiles transaction/alert timeline stats, risk distribution levels, and top risk factors.
+* `GET /api/v1/reports/download` — Exports all alerts as a downloadable CSV.

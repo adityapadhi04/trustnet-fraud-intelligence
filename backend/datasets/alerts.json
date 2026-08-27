@@ -1,0 +1,189 @@
+{
+  "ALT-TX73218300BB": {
+    "alert_id": "ALT-TX73218300BB",
+    "transaction_id": "TX73218300BB",
+    "severity": "MEDIUM",
+    "risk_score": 51.82,
+    "risk_level": "MEDIUM",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "RESOLVED",
+    "created_at": "2026-08-01 01:11:05"
+  },
+  "ALT-TX4A451B9634": {
+    "alert_id": "ALT-TX4A451B9634",
+    "transaction_id": "TX4A451B9634",
+    "severity": "MEDIUM",
+    "risk_score": 57.55,
+    "risk_level": "MEDIUM",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 01:13:05"
+  },
+  "ALT-TXE960C21205": {
+    "alert_id": "ALT-TXE960C21205",
+    "transaction_id": "TXE960C21205",
+    "severity": "MEDIUM",
+    "risk_score": 59.73,
+    "risk_level": "MEDIUM",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 01:14:05"
+  },
+  "ALT-TX50D53A7EA4": {
+    "alert_id": "ALT-TX50D53A7EA4",
+    "transaction_id": "TX50D53A7EA4",
+    "severity": "HIGH",
+    "risk_score": 63.02,
+    "risk_level": "HIGH",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 01:15:05"
+  },
+  "ALT-TX9F54866AA4": {
+    "alert_id": "ALT-TX9F54866AA4",
+    "transaction_id": "TX9F54866AA4",
+    "severity": "HIGH",
+    "risk_score": 66.05,
+    "risk_level": "HIGH",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 01:19:05"
+  },
+  "ALT-TX0C7D2A6A17": {
+    "alert_id": "ALT-TX0C7D2A6A17",
+    "transaction_id": "TX0C7D2A6A17",
+    "severity": "HIGH",
+    "risk_score": 65.98,
+    "risk_level": "HIGH",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 01:37:05"
+  },
+  "ALT-TXC349904343": {
+    "alert_id": "ALT-TXC349904343",
+    "transaction_id": "TXC349904343",
+    "severity": "HIGH",
+    "risk_score": 66.96,
+    "risk_level": "HIGH",
+    "alert_type": "NETWORK_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 01:39:05"
+  },
+  "ALT-TX4B9CF87C0A": {
+    "alert_id": "ALT-TX4B9CF87C0A",
+    "transaction_id": "TX4B9CF87C0A",
+    "severity": "MEDIUM",
+    "risk_score": 51.35,
+    "risk_level": "MEDIUM",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 03:37:22"
+  },
+  "ALT-TX264D9E1350": {
+    "alert_id": "ALT-TX264D9E1350",
+    "transaction_id": "TX264D9E1350",
+    "severity": "MEDIUM",
+    "risk_score": 56.14,
+    "risk_level": "MEDIUM",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 03:40:22"
+  },
+  "ALT-TXD7F63714D4": {
+    "alert_id": "ALT-TXD7F63714D4",
+    "transaction_id": "TXD7F63714D4",
+    "severity": "HIGH",
+    "risk_score": 60.06,
+    "risk_level": "HIGH",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 03:41:22"
+  },
+  "ALT-TX797E2AFE9F": {
+    "alert_id": "ALT-TX797E2AFE9F",
+    "transaction_id": "TX797E2AFE9F",
+    "severity": "HIGH",
+    "risk_score": 63.49,
+    "risk_level": "HIGH",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 03:48:22"
+  },
+  "ALT-TXD4B98A5E85": {
+    "alert_id": "ALT-TXD4B98A5E85",
+    "transaction_id": "TXD4B98A5E85",
+    "severity": "HIGH",
+    "risk_score": 64.98,
+    "risk_level": "HIGH",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 03:51:22"
+  },
+  "ALT-TXAE6A854671": {
+    "alert_id": "ALT-TXAE6A854671",
+    "transaction_id": "TXAE6A854671",
+    "severity": "HIGH",
+    "risk_score": 65.87,
+    "risk_level": "HIGH",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "RESOLVED",
+    "created_at": "2026-08-01 03:53:22"
+  },
+  "ALT-TX887C2EC4AA": {
+    "alert_id": "ALT-TX887C2EC4AA",
+    "transaction_id": "TX887C2EC4AA",
+    "severity": "HIGH",
+    "risk_score": 66.21,
+    "risk_level": "HIGH",
+    "alert_type": "NETWORK_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "FALSE_POSITIVE",
+    "created_at": "2026-08-01 03:58:22"
+  },
+  "ALT-TX20A7D19E4D": {
+    "alert_id": "ALT-TX20A7D19E4D",
+    "transaction_id": "TX20A7D19E4D",
+    "severity": "CRITICAL",
+    "risk_score": 85.57,
+    "risk_level": "CRITICAL",
+    "alert_type": "FRAUD_RISK",
+    "primary_reason": "Elevated ML supervised fraud probability",
+    "status": "OPEN",
+    "created_at": "2026-08-01 00:02:07"
+  },
+  "ALT-TX27D4B0F95C": {
+    "alert_id": "ALT-TX27D4B0F95C",
+    "transaction_id": "TX27D4B0F95C",
+    "severity": "CRITICAL",
+    "risk_score": 94.6,
+    "risk_level": "CRITICAL",
+    "alert_type": "POTENTIAL_MULE",
+    "primary_reason": "Potential mule behavior detected (e.g. rapid fund pass-through or fan-in/fan-out patterns)",
+    "status": "OPEN",
+    "created_at": "2026-08-01 00:04:38"
+  },
+  "ALT-TX557A226B93": {
+    "alert_id": "ALT-TX557A226B93",
+    "transaction_id": "TX557A226B93",
+    "severity": "CRITICAL",
+    "risk_score": 94.2,
+    "risk_level": "CRITICAL",
+    "alert_type": "POTENTIAL_MULE",
+    "primary_reason": "Potential mule behavior detected (e.g. rapid fund pass-through or fan-in/fan-out patterns)",
+    "status": "OPEN",
+    "created_at": "2026-08-01 00:10:04"
+  }
+}

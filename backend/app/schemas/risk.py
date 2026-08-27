@@ -21,6 +21,9 @@ class TransactionAnalysisRequest(BaseModel):
     sender_id: Optional[str] = Field(None, description="Sender account ID.")
     receiver_id: Optional[str] = Field(None, description="Receiver account ID.")
     timestamp: Optional[str] = Field(None, description="Transaction timestamp.")
+    transaction_id: Optional[str] = Field(None, description="Transaction ID.")
+    demo_event: Optional[bool] = Field(None, description="Flag indicating if this is a controlled demonstration transaction.")
+
 
 
 class RiskFactorSchema(BaseModel):

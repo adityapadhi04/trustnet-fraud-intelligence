@@ -70,6 +70,13 @@ function TransactionAnalysis({ selectedTx, setSelectedTx, analysisResult, setAna
     }
   };
 
+  // Auto-run analysis if selectedTx is set but analysisResult is not present (e.g. when navigating from alerts)
+  useEffect(() => {
+    if (selectedTx && !analysisResult && !loadingAnalysis) {
+      handleSelectTransaction(selectedTx);
+    }
+  }, [selectedTx, analysisResult]);
+
   // Filter transactions based on query
   const filteredTransactions = transactions.filter(tx => 
     tx.transaction_id.toLowerCase().includes(searchQuery.toLowerCase()) ||
