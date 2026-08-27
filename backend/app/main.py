@@ -4,6 +4,7 @@ Registers modular routers, configures restricted CORS policies, and serves
 the baseline health and metadata endpoints.
 """
 
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.routes import risk, transactions, model, network
@@ -23,6 +24,13 @@ ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173"
 ]
+
+# Read optional deployed Vercel frontend URL from environment configuration
+frontend_url_env = os.getenv("FRONTEND_URL")
+if frontend_url_env:
+    # Allow multiple origins separated by commas
+    origins_from_env = [origin.strip() for origin in frontend_url_env.split(",") if origin.strip()]
+    ALLOWED_ORIGINS.extend(origins_from_env)
 
 app.add_middleware(
     CORSMiddleware,
