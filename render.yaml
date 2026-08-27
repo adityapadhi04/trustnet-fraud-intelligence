@@ -7,5 +7,7 @@ services:
     envVars:
       - key: PYTHONPATH
         value: .
+      - key: PYTHON_VERSION
+        value: "3.11"
       - key: FRONTEND_URL
         sync: false
