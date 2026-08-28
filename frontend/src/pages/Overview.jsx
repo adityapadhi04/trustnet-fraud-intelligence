@@ -18,7 +18,7 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
     last_transaction_time: null
   });
   const [liveFeed, setLiveFeed] = useState([]);
-  
+
   // Last transaction elapsed time tracking
   const [secondsSinceLast, setSecondsSinceLast] = useState(null);
   const lastTxRef = useRef(null);
@@ -144,7 +144,7 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
 
   return (
     <div className="overview-page" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      
+
       {/* Top Welcome Title */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
@@ -156,13 +156,13 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
       </div>
 
       {/* COMPONENT 5 — LIVE STREAM MONITOR PANEL */}
-      <div 
-        className="card" 
-        style={{ 
+      <div
+        className="card"
+        style={{
           borderLeft: `4px solid ${systemOnline ? 'var(--color-success)' : 'var(--color-danger)'}`,
-          padding: '24px', 
-          display: 'flex', 
-          flexDirection: 'column', 
+          padding: '24px',
+          display: 'flex',
+          flexDirection: 'column',
           gap: '20px',
           background: 'radial-gradient(ellipse at top right, rgba(56, 189, 248, 0.04), transparent), var(--bg-card)'
         }}
@@ -202,10 +202,10 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
               {demoMode ? '⏹ DEMO MODE: ON' : '▶ DEMO MODE: OFF'}
             </button>
           </div>
-          <span 
-            style={{ 
-              fontSize: '12px', 
-              fontWeight: '800', 
+          <span
+            style={{
+              fontSize: '12px',
+              fontWeight: '800',
               letterSpacing: '0.5px',
               color: systemOnline ? 'var(--color-success)' : 'var(--color-danger)',
               display: 'flex',
@@ -213,10 +213,10 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
               gap: '6px'
             }}
           >
-            <span style={{ 
-              width: '8px', 
-              height: '8px', 
-              borderRadius: '50%', 
+            <span style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
               backgroundColor: systemOnline ? 'var(--color-success)' : 'var(--color-danger)',
               boxShadow: `0 0 8px ${systemOnline ? 'var(--color-success)' : 'var(--color-danger)'}`
             }}></span>
@@ -225,7 +225,7 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
         </div>
 
         {demoMode && (
-          <div style={{ 
+          <div style={{
             backgroundColor: 'rgba(239, 68, 68, 0.08)',
             border: '1px solid rgba(239, 68, 68, 0.25)',
             borderRadius: 'var(--radius-sm)',
@@ -244,10 +244,10 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
                 Controlled critical event every 5 transactions
               </span>
             </div>
-            <div style={{ 
-              fontFamily: 'var(--font-mono)', 
-              backgroundColor: 'rgba(239, 68, 68, 0.15)', 
-              padding: '4px 10px', 
+            <div style={{
+              fontFamily: 'var(--font-mono)',
+              backgroundColor: 'rgba(239, 68, 68, 0.15)',
+              padding: '4px 10px',
               borderRadius: 'var(--radius-sm)',
               fontSize: '11px',
               border: '1px solid rgba(239, 68, 68, 0.2)'
@@ -267,7 +267,7 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
 
         {/* Live Simulator Metrics Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', marginTop: '4px' }}>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', backgroundColor: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.03)', padding: '12px 16px', borderRadius: 'var(--radius-sm)' }}>
             <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Transactions Monitored</span>
             <span style={{ fontSize: '24px', fontWeight: '700', fontFamily: 'var(--font-mono)' }}>
@@ -333,7 +333,7 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
                 liveFeed.map((item, index) => {
                   const tx = item.transaction;
                   const analysis = item.analysis;
-                  
+
                   // Extract time HH:MM:SS
                   let timeStr = '00:00:00';
                   if (tx.timestamp) {
@@ -342,13 +342,13 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
                   }
 
                   const isHighRisk = analysis.risk_level === 'HIGH' || analysis.risk_level === 'CRITICAL';
-                  
+
                   return (
-                    <tr 
-                      key={tx.transaction_id + '-' + index} 
+                    <tr
+                      key={tx.transaction_id + '-' + index}
                       onClick={() => handleTxRowClick(item)}
-                      style={{ 
-                        borderBottom: '1px solid var(--border-color)', 
+                      style={{
+                        borderBottom: '1px solid var(--border-color)',
                         cursor: 'pointer',
                         transition: 'background var(--transition-fast)',
                         fontSize: '13px'

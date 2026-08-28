@@ -22,7 +22,9 @@ ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:5173",
-    "http://127.0.0.1:5173"
+    "http://127.0.0.1:5173",
+    "https://trustnet-fraud-intelligence.vercel.app",
+    "https://trustnet-fraud-intelligence.vercel.app/"
 ]
 
 # Read optional deployed Vercel frontend URL from environment configuration
@@ -35,6 +37,7 @@ if frontend_url_env:
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
+    allow_origin_regex="https://trustnet-.*\\.vercel\\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

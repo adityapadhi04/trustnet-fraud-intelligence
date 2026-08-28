@@ -1,7 +1,7 @@
 const isDev = import.meta.env.DEV;
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL !== undefined 
-  ? import.meta.env.VITE_API_BASE_URL 
-  : (isDev ? 'http://127.0.0.1:8000' : 'https://trustnet-fraud-intelligence.onrender.com');
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL !== undefined
+    ? import.meta.env.VITE_API_BASE_URL
+    : (isDev ? 'http://127.0.0.1:8000' : '');
 
 
 /**
@@ -21,8 +21,8 @@ async function request(path, options = {}) {
             try {
                 const errorData = await response.json();
                 if (errorData.detail) {
-                    errorMessage = typeof errorData.detail === 'string' 
-                        ? errorData.detail 
+                    errorMessage = typeof errorData.detail === 'string'
+                        ? errorData.detail
                         : JSON.stringify(errorData.detail);
                 }
             } catch (jsonErr) {
