@@ -132,12 +132,11 @@ function Overview({ setSelectedTx, setAnalysisResult, onNavigate, demoMode, setD
   }
 
   if (error) {
-    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
     return (
       <div className="error-alert-box" style={{ marginTop: '20px' }}>
         <strong>System Error:</strong> {error}
         <p style={{ marginTop: '8px', fontSize: '12px' }}>
-          Ensure the FastAPI backend is running at {API_BASE_URL} and try again.
+          Unable to connect to the TRUSTNET API. Please try again.
         </p>
       </div>
     );
